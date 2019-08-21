@@ -7,6 +7,6 @@ The Agenda with Steve Paikin is TVO's flagship current affairs program - devoted
 
 ^^^ To install this addon, either use the <a href="https://www.tvaddons.co/github-browser-kodi/">Kodi Github installer</a> addon or save the .zip file downloaded from the 'clone or download' button to somewhere the Kodi can access (e.g. network drive or USB stick). Then on the Kodi, go to addons > install from zip file.<br>
 
-<img src="http://podcasts.tvo.org/theagenda/images/agendaaudio_1400_201602.jpg">
+<img src="http://podcasts.tvo.org/theagenda/images/agenda_1400_201602.jpg">
 <br><a href="http://www.kodi.tv"><br>
 <img src="https://kodi.tv/sites/default/files/page/field_image/about--devices.jpg">
