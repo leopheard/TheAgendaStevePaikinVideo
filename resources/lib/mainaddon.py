@@ -28,7 +28,7 @@ def get_playable_podcast(soup):
 #            desc = content.find('description')
 #            desc = desc.get_text()
             thumbnail = content.find('media:thumbnail')
-            thumbnail = desc.get_text('url')
+            thumbnail = thumbnail.get('url')
         except AttributeError:
             continue
         item = {
@@ -45,7 +45,6 @@ def compile_playable_podcast(playable_podcast):
     @para: list containing dict of key/values pairs for playable podcasts
     """
     items = []
-
     for podcast in playable_podcast:
         items.append({
             'label': podcast['title'],
@@ -68,7 +67,7 @@ def get_playable_podcast1(soup):
 #            desc = content.find('description')
 #            desc = desc.get_text()
             thumbnail = content.find('media:thumbnail')
-            thumbnail = desc.get_text('url')
+            thumbnail = thumbnail.get('url')
         except AttributeError:
             continue
         item = {
@@ -85,7 +84,6 @@ def compile_playable_podcast1(playable_podcast1):
     @para: list containing dict of key/values pairs for playable podcasts
     """
     items = []
-
     for podcast in playable_podcast1:
         items.append({
             'label': podcast['title'],
