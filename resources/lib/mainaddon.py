@@ -3,9 +3,6 @@ import re
 from bs4 import BeautifulSoup
 
 def get_soup(URL0):
-    """
-    @param: url of site to be scraped
-    """
     page = requests.get(URL0)
     soup = BeautifulSoup(page.text, 'html.parser')
     print("type: ", type(soup))
@@ -14,9 +11,6 @@ get_soup("http://feeds.tvo.org/tvo/TxZN")
 
 
 def get_playable_podcast(soup):
-    """
-    @param: parsed html page
-    """
     subjects = []
     for content in soup.find_all('item'):
         try:        
@@ -27,23 +21,19 @@ def get_playable_podcast(soup):
             title = title.get_text()
 #            desc = content.find('description')
 #            desc = desc.get_text()
-            thumbnail = content.find('media:thumbnail')
-            thumbnail = thumbnail.get('url')
+#            thumbnail = content.find('media:thumbnail')
+#            thumbnail = thumbnail.get('url')
         except AttributeError:
             continue
         item = {
                 'url': link,
                 'title': title,
 #                'desc': desc,
-                'thumbnail': thumbnail,
+                'thumbnail': "http://podcasts.tvo.org/theagenda/images/agenda_1400_201602.jpg",
         }
         subjects.append(item) 
     return subjects
-
 def compile_playable_podcast(playable_podcast):
-    """
-    @para: list containing dict of key/values pairs for playable podcasts
-    """
     items = []
     for podcast in playable_podcast:
         items.append({
@@ -57,7 +47,7 @@ def compile_playable_podcast(playable_podcast):
 
 def get_playable_podcast1(soup):
     subjects = []
-    for content in soup.find_all('item', limit=7):
+    for content in soup.find_all('item', limit=40):
         try:        
             link = content.find('media:content')
             link = link.get('url')
@@ -73,23 +63,20 @@ def get_playable_podcast1(soup):
         item = {
                 'url': link,
                 'title': title,
-#                'desc': desc,
-                'thumbnail': thumbnail,
+                'desc': desc,
+                'thumbnail': "http://podcasts.tvo.org/theagenda/images/agenda_1400_201602.jpg",
         }
         subjects.append(item) 
     return subjects
-
 def compile_playable_podcast1(playable_podcast1):
-    """
-    @para: list containing dict of key/values pairs for playable podcasts
-    """
     items = []
     for podcast in playable_podcast1:
         items.append({
             'label': podcast['title'],
-            'thumbnail': podcast['thumbnail'],
             'path': podcast['url'],
+            'thumbnail': podcast['thumbnail'],
 #            'info': podcast['desc'],
             'is_playable': True,
     })
     return items
+
